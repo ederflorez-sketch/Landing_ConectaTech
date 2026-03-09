@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ConectaTech by Platzi — Networking Summit</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1722;
+      --panel2:#0b1220;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --line:rgba(148,163,184,.2);
+      --accent:#2ecc71;
+      --accent2:#1d8f52;
+      --white:#fff;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* HERO */
+    .hero{position:relative;isolation:isolate}
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(120deg, rgba(11,15,20,.92) 0%, rgba(11,15,20,.70) 55%, rgba(11,15,20,.92) 100%),
+        url("img_convention_crowd.jpg") center/cover no-repeat;
+      z-index:-2;
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 30% 20%, rgba(46,204,113,.25), transparent 60%);z-index:-1}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:42px;width:auto;background:#fff;border-radius:10px;padding:6px}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:13px}
+    .pill b{color:var(--text)}
+    .heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:stretch;padding:16px 0 34px}
+    @media (max-width: 900px){.heroGrid{grid-template-columns:1fr}}
+    h1{margin:10px 0 8px;font-size:44px;line-height:1.05}
+    .sub{color:var(--muted);font-size:18px;line-height:1.5;margin:0 0 18px}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);text-decoration:none;font-weight:700}
+    .btnPrimary{background:linear-gradient(90deg,var(--accent),#5ee8a3);color:#0b0f14;border:0}
+    .btnGhost{background:rgba(15,23,34,.35)}
+    .heroCard{background:rgba(15,23,34,.55);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .heroCard h3{margin:0 0 10px}
+    .meta{display:grid;grid-template-columns:1fr;gap:10px}
+    .metaItem{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);background:rgba(11,18,32,.35);border-radius:14px;padding:10px 12px}
+    .metaItem .ico{width:26px;height:26px;display:grid;place-items:center;border-radius:9px;background:rgba(46,204,113,.16);color:var(--accent)}
+    .metaItem .t{font-weight:700}
+    .metaItem .d{color:var(--muted);font-size:13px;line-height:1.4}
+
+    /* SECTIONS */
+    section{padding:34px 0}
+    .sectionTitle{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:16px}
+    .sectionTitle h2{margin:0;font-size:28px}
+    .sectionTitle p{margin:0;color:var(--muted)}
+
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width: 900px){.grid3{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg, rgba(15,23,34,.88), rgba(11,18,32,.88));border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{margin:10px 0 0;padding:0 0 0 18px;color:var(--muted)}
+    .list li{margin:6px 0}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width: 900px){.split{grid-template-columns:1fr}}
+    .imgCard{overflow:hidden;padding:0}
+    .imgCard img{display:block;width:100%;height:100%;max-height:330px;object-fit:cover}
+    .imgCard .pad{padding:16px}
+
+    /* PRICING */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width: 900px){.pricing{grid-template-columns:1fr}}
+    .tier{position:relative}
+    .badge{position:absolute;top:14px;right:14px;background:rgba(46,204,113,.18);border:1px solid rgba(46,204,113,.35);color:var(--accent);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .price{font-size:40px;margin:0;letter-spacing:-.02em}
+    .small{font-size:12px;color:var(--muted)}
+    .hr{height:1px;background:var(--line);margin:12px 0}
+    .tier .btn{width:100%}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--line);padding:20px 0 34px;color:var(--muted)}
+    footer b{color:var(--text)}
+    .credits{font-size:12px;line-height:1.5}
+    .note{font-size:12px}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <img src="logo_conectatech.png" alt="Logo ConectaTech" />
+          <div class="pill"><b>ConectaTech</b> <span>by Platzi</span></div>
+        </div>
+        <a class="btn btnGhost" href="#entradas">Ver entradas</a>
+      </div>
+
+      <div class="heroGrid">
+        <div>
+          <div class="pill">Networking Summit • <b>Bogotá + Híbrido</b> • Cupos limitados</div>
+          <h1>Conecta con talento, empresas y aliados del ecosistema digital.</h1>
+          <p class="sub">
+            Un evento diseñado para crear <b>conexiones útiles</b>: rondas de speed networking, matchmaking por intereses,
+            clínicas de empleabilidad y espacios B2B para alianzas y patrocinios.
+          </p>
+          <div class="ctaRow">
+            <a class="btn btnPrimary" href="#registro">✅ Reserva tu cupo</a>
+            <a class="btn btnGhost" href="#agenda">🗓️ Ver agenda</a>
+            <a class="btn btnGhost" href="#por-que">✨ Por qué asistir</a>
+          </div>
+          <p class="note" style="margin-top:12px;">*Esta página es parte de un proyecto académico. Ajusta fecha, lugar y speakers según tu plan final.</p>
+        </div>
+
+        <aside class="heroCard" id="registro">
+          <h3>Información rápida</h3>
+          <div class="meta">
+            <div class="metaItem">
+              <div class="ico">📍</div>
+              <div>
+                <div class="t">Lugar</div>
+                <div class="d">Bogotá (presencial) + streaming (híbrido). <br/>Venue sugerido: centro de eventos / coworking.</div>
+              </div>
+            </div>
+            <div class="metaItem">
+              <div class="ico">🕒</div>
+              <div>
+                <div class="t">Horario</div>
+                <div class="d">08:00–18:30 (1 día). Agenda con bloques de networking y talleres.</div>
+              </div>
+            </div>
+            <div class="metaItem">
+              <div class="ico">👥</div>
+              <div>
+                <div class="t">Cupos</div>
+                <div class="d">Meta: 300 asistentes (250 comunidad, 150 profesionales, 50 VIP + empresas).</div>
+              </div>
+            </div>
+            <div class="metaItem">
+              <div class="ico">🤝</div>
+              <div>
+                <div class="t">Matchmaking</div>
+                <div class="d">Formulario previo para sugerir reuniones 1:1 por interés y perfil.</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="por-que">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>¿Por qué asistir?</h2>
+          <p>Networking con intención + seguimiento = resultados.</p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <h3>🔎 Oportunidades reales</h3>
+            <p class="muted">Conecta con decisores y equipos que contratan o buscan aliados para proyectos.</p>
+            <ul class="list">
+              <li>Reuniones agendadas 1:1</li>
+              <li>Tablero de vacantes y retos</li>
+              <li>Conexiones B2B (patrocinios, formación)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🧠 Valor práctico</h3>
+            <p class="muted">Sales con tareas hechas: portafolio mejorado, mensajes claros y próximos pasos.</p>
+            <ul class="list">
+              <li>Clínicas exprés de CV/LinkedIn</li>
+              <li>Simulación de entrevista</li>
+              <li>Talleres cortos por especialidad</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🌱 Comunidad y pertenencia</h3>
+            <p class="muted">Una experiencia para fortalecer vínculos, aprender y colaborar con pares.</p>
+            <ul class="list">
+              <li>Zonas temáticas (Data/IA, Dev, UX, Product, Growth)</li>
+              <li>After networking</li>
+              <li>Acceso post-evento (30 días) a comunidad privada</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="agenda">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Agenda (1 día)</h2>
+          <p>Ejemplo adaptable según el venue y aliados.</p>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <h3>Bloques principales</h3>
+            <ul class="list">
+              <li><b>08:00</b> Registro + match check-in</li>
+              <li><b>09:00</b> Keynote (tendencias y empleabilidad tech)</li>
+              <li><b>10:00</b> Speed networking (Bloque 1)</li>
+              <li><b>11:00</b> Zonas temáticas + stands</li>
+              <li><b>13:00</b> Almuerzo + reuniones 1:1</li>
+              <li><b>14:30</b> Talleres cortos (CV, portafolio, entrevistas)</li>
+              <li><b>16:00</b> Speed networking (Bloque 2)</li>
+              <li><b>17:00</b> Pitch & Partners (startups / aliados)</li>
+              <li><b>18:00</b> Cierre + after networking</li>
+            </ul>
+          </div>
+          <div class="card imgCard">
+            <img src="bogota_color.jpg" alt="Vista aérea de Bogotá" />
+            <div class="pad">
+              <div class="pill">Sede sugerida: Bogotá</div>
+              <p class="muted" style="margin:10px 0 0;">La sede se define por accesibilidad, conectividad, y espacios para stands y networking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="entradas">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Entradas (COP)</h2>
+          <p>Precios propuestos con fines académicos.</p>
+        </div>
+        <div class="pricing">
+          <div class="card tier">
+            <h3>Comunidad</h3>
+            <p class="price">99.000</p>
+            <div class="small">Preventa: 79.000</div>
+            <div class="hr"></div>
+            <ul class="list">
+              <li>Acceso general</li>
+              <li>Speed networking</li>
+              <li>App del evento</li>
+            </ul>
+            <div class="hr"></div>
+            <a class="btn btnPrimary" href="#registro">Elegir Comunidad</a>
+          </div>
+          <div class="card tier">
+            <h3>Profesional</h3>
+            <p class="price">189.000</p>
+            <div class="small">Preventa: 149.000</div>
+            <div class="hr"></div>
+            <ul class="list">
+              <li>Todo Comunidad</li>
+              <li>1 mentoría grupal</li>
+              <li>Kit digital</li>
+            </ul>
+            <div class="hr"></div>
+            <a class="btn btnPrimary" href="#registro">Elegir Profesional</a>
+          </div>
+          <div class="card tier" style="border-color:rgba(46,204,113,.45)">
+            <div class="badge">Recomendado</div>
+            <h3>VIP</h3>
+            <p class="price">349.000</p>
+            <div class="small">Preventa: 299.000</div>
+            <div class="hr"></div>
+            <ul class="list">
+              <li>Todo Profesional</li>
+              <li>Lounge VIP</li>
+              <li>Clínica CV / portafolio</li>
+            </ul>
+            <div class="hr"></div>
+            <a class="btn btnPrimary" href="#registro">Elegir VIP</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Paquetes corporativos</h3>
+          <p class="muted" style="margin:6px 0 0">Recruiter Pass (2 personas): <b>2.300.000</b> • Patrocinio (branding + stand + charla): <b>7.500.000</b> (cupos limitados).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Preguntas frecuentes</h2>
+          <p>Lo esencial para decidir rápido.</p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <h3>¿Necesito experiencia?</h3>
+            <p class="muted">No. Recomendamos llegar con un objetivo claro (empleo, alianza, proyecto) y un pitch de 30 segundos.</p>
+          </div>
+          <div class="card">
+            <h3>¿Cómo funciona el matchmaking?</h3>
+            <p class="muted">Antes del evento completas un formulario de intereses. Te sugerimos reuniones 1:1 y espacios temáticos compatibles.</p>
+          </div>
+          <div class="card">
+            <h3>¿Qué me llevo después?</h3>
+            <p class="muted">Acceso 30 días a comunidad privada, agenda de contactos (opt-in) y grabaciones de charlas seleccionadas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="credits">
+        <b>Créditos de imágenes:</b>
+        <ul>
+          <li>Foto de fondo (convención): Pexels — “Crowded Convention Center Gathering Event” (https://www.pexels.com/photo/crowded-convention-center-gathering-event-30324916/).</li>
+          <li>Foto Bogotá: Unsplash — Random Institute (https://unsplash.com/photos/aerial-view-of-town-IjIzgLEkwxs).</li>
+        </ul>
+        <b>Referencias conceptuales (para la propuesta académica):</b>
+        <ul>
+          <li>Adler, P. S., & Kwon, S.-W. (2002). Social capital. <i>Academy of Management Review</i>. https://doi.org/10.5465/AMR.2002.5922314</li>
+          <li>Granovetter, M. S. (1973). The strength of weak ties. <i>American Journal of Sociology</i>. https://doi.org/10.1086/225469</li>
+        </ul>
+      </div>
+      <p class="note">Aviso: “ConectaTech by Platzi” se utiliza como caso de estudio. Verifica lineamientos de marca y permisos antes de comunicar públicamente.</p>
+    </div>
+  </footer>
+</body>
+</html>
